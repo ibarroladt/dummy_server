@@ -1,23 +1,48 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+  <% if @user %>
+  
+  <% else %>
+    <h1>Welcome to Javi's Hot Spot!!!</h1>
+  <h3>Where beautiful people connect</h3>
+  
+  <%if @error%>
+  <%= @error %>
+  <%end%>
+<div id="form">
+  <form name="user_auth" action="/user_login" method="POST">     
+    <label for="user_name">Email:</label>
+    <input id="user_name" type="text" name="user[user_name]">
+    <br><br>
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="user[password]">
+    <br><br>
+    <input type="submit" value="Login" id="submit">
+  </form>
+</div> <!--end "login_form" div -->
+  <br>
+
+  <div id="form">
+  <form name="user_auth" action="/user_new" method="POST">     
+    <label for="user_name">Email:</label>
+    <input id="user_name" type="text" name="user[user_name]">
+    <br><br>
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="user[password]">
+    <br><br>
+    <input type="submit" value="Register" id="submit">
+  </form>
+ <% end %> 
+</div> <!--end "register_form" div -->
+ <br>
+
+
+
+
+<ul>
+<%User.all.each do |user|%>
+  <li><%=user.user_name%></li>
+<%end%>
+</ul>
+
 </div>

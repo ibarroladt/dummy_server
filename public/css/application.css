@@ -7,3 +7,21 @@
 th {
   text-align: left;
 }
+
+#form {
+  text-align: right;
+  border: none;
+  width: 300px;
+}
+
+/*#user_name {
+  float: right;
+}
+
+#password {
+  float: right;
+}
+
+#submit {
+  float: right;
+}*/

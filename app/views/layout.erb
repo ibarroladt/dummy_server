@@ -19,5 +19,8 @@
 </head>
 <body>
   <%= yield %>
+  <% if @user %>
+  <a href="/logout">log out</a>
+<% end %>
 </body>
 </html>
